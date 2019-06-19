@@ -5,10 +5,11 @@ import os
 import sys
 
 # python version dependent import
-if (sys.version_info > (3, 0)):
-    from logging.handlers import QueueHandler, QueueListener
+# python < 3.2 does not provide methods in std. lib
+if sys.version_info < (3, 2):
+    from logutils.queue import QueueHandler, QueueListener
 else:
-    from logutils import QueueHandler, QueueListener
+    from logging.handlers import QueueHandler, QueueListener
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 log_path = os.path.join(current_dir, 'log_example.log')
