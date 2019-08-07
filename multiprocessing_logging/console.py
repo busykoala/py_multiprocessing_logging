@@ -8,11 +8,12 @@ import time
 def do_job(task):
     random_int = randrange(10)
     time.sleep(random_int)
-    logging.info('do_job called with: {} => {}'.format(task, datetime.now()))
+    logging.info('func called with task: {}'.format(task))
     return random_int
 
 
 def main():
+    # setup logger
     test_logger = logging.basicConfig(
         level=logging.DEBUG,
         format='%(levelname)s: %(asctime)s - %(process)s - %(message)s')
@@ -25,19 +26,17 @@ def main():
     # to get the maximum speed for I/O tasks.
     processes = 100
 
-    test_logger = logging.getLogger(logger_name)
     test_logger.info('Hi, I\'m the main thread')
 
     pool = PoolWithLogging(processes=processes,
                            logger_name=logger_name)
-
     start_time = time.time()
     return_values = pool.map(do_job, tasks)
     end_time = time.time()
-
     pool.close()
 
-    test_logger.info('Hi, from the main thread again')
+    test_logger.info('Hi, from the main thread again.')
+
     print('*** Handling all tasks took {} seconds ***'.format(
         end_time - start_time))
 
