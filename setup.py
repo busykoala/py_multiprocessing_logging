@@ -4,12 +4,12 @@ import sys
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-NAME = 'multiprocessing_logging'
+NAME = 'py_multiprocessing_logging'
 VERSION = '0.0.1'
 AUTHOR = 'Busykoala'
 EMAIL = 'info@busykoala.ch'
 DESCRIPTION = 'Test logging while multiprocessing'
-URL = 'https://github.com/busykoala/multiprocessing_logging'
+URL = 'https://git.sr.ht:~busykoala/py_multiprocessing_logging'
 
 # python versions smaller 3.2 need
 # logutils for QueueListener and QueueHandler
